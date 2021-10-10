@@ -50,6 +50,8 @@ kill()--Send Signal to Process or Group of Processes
 
 https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigkill.htm
 
+https://stackoverflow.com/questions/67985972/how-can-you-send-a-string-given-has-argument-to-a-program-to-another-program-usi
+
 Examples:
 
 https://github.com/yhcho0405/MiniTalk
