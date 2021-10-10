@@ -1,6 +1,7 @@
-NAME = minitalk
+NAME_CLIENT = client
+NAME_SERVER = server
 
-HEADER_DIR = ./includes
+HEADER_DIR = ./includes/minitalk.h
 
 SOURCE_DIR = ./src
 
@@ -8,7 +9,8 @@ LBFT_DIR = ./libs/libft
 
 LBFT_LIB = ${LBFT_DIR}/libft.a
 
-SOURCES_FILES = client.c server.c
+SOURCES_FILES_CLIENT = $(SOURCE_DIR)/client.c
+SOURCES_FILES_SERVER = $(SOURCE_DIR)/server.c
 
 RM = @rm -f
 
@@ -16,17 +18,22 @@ CC = @clang
 
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCES = $(addprefix $(SOURCE_DIR)/, $(SOURCES_FILES))
+# SOURCES = $(addprefix $(SOURCE_DIR)/, $(SOURCES_FILES))
 
-OBJECTS = ${SOURCES:.c=.o}
+OBJECTS_CLT = ${SOURCES_FILES_CLIENT:.c=.o}
+OBJECTS_SRV = ${SOURCES_FILES_SERVER:.c=.o}
 
 MSG1 = @echo "Compiled ✔︎"
 MSG2 = @echo "Cleaned ✔︎"
 
-all: ${NAME}
+all: ${NAME_CLIENT} ${NAME_SERVER} ${HEADER_DIR}
 
-$(NAME): ${LBFT_LIB} ${OBJECTS} ${MLX_HEADER} ${OBJECTS}
-	${CC} ${CFLAGS} ${OBJECTS} ${LBFT_LIB} -o ${NAME}
+$(NAME_CLIENT): ${LBFT_LIB} ${OBJECTS_CLT}
+	${CC} ${CFLAGS} ${OBJECTS_CLT} ${LBFT_LIB} -o ${NAME_CLIENT}
+	${MSG1}
+
+$(NAME_SERVER): ${LBFT_LIB} ${OBJECTS_SRV}
+	${CC} ${CFLAGS} ${OBJECTS_SRV} ${LBFT_LIB} -o ${NAME_SERVER}
 	${MSG1}
 
 ${LBFT_LIB}:
@@ -36,12 +43,12 @@ ${LBFT_LIB}:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 clean:
-	${RM}	${OBJECTS} ${OBJECTS_BONUS}
+	${RM}	${OBJECTS_CLT} ${OBJECTS_SRV}
 	@${MAKE} fclean -C ${LBFT_DIR}
 	${MSG2}
 
 fclean: clean
-	${RM} ${NAME} ${NAME_BONUS}
+	${RM} ${NAME_CLIENT} ${NAME_SERVER}
 	@${MAKE} fclean -C ${LBFT_DIR}
 
 run:
