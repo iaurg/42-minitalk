@@ -1,1 +1,61 @@
 # 42-minitalk
+
+TODO
+- [] The executable files must be named client and server.
+- [] You have to handle errors sensitively. In no way can your program quit unexpectedly
+(Segmentation fault, bus error, double free, etc).
+- [] Your program cannot have memory leaks.
+- [] You can use one global variable but it must be justified
+- [] Communication between your programs should ONLY be done using UNIX signals.
+- [] You can only use the two signals SIGUSR1 and SIGUSR2
+
+
+On the mandatory part you are allowed to use the following functions:
+◦ write
+◦ ft_printf and any equivalent YOU coded
+◦ signal
+◦ sigemptyset
+◦ sigaddset
+◦ sigaction
+◦ kill
+◦ getpid
+◦ malloc
+◦ free
+◦ pause
+◦ sleep
+◦ usleep
+◦ exit
+
+Material:
+
+https://www.youtube.com/watch?v=83M5-NPDeWs
+
+https://www.youtube.com/watch?v=5We_HtLlAbs
+
+Signals communicate between proccesses
+
+usleep stops for some time the execution
+
+getpid() - Gets process ID
+
+Signals work as something that send notifications to processes
+
+Process decides what to do when the signal arrives, using a handler
+
+SIGUSR1 = 10 SIGUSR2 = 12
+
+signals can be sent three ways: -9, -SIGUSR1, USR1
+
+kill()--Send Signal to Process or Group of Processes
+
+https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigkill.htm
+
+Examples:
+
+https://github.com/yhcho0405/MiniTalk
+
+https://github.com/mlanca-c/Minitalk
+
+https://github.com/natflausino/Minitalk
+
+https://github.com/rkrocha/minitalk
