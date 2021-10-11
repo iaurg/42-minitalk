@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/10 19:47:32 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/11 07:35:52 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
 		return 0;
 	printf("argv: %s", argv[1]);
 	//  int kill(pid_t pid, int sig );
-	kill(ft_atoi(argv[1]), 10);
+	kill(ft_atoi(argv[1]), SIGUSR1);
 	return 0;
 }
