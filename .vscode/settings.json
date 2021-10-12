@@ -8,17 +8,18 @@
   "files.insertFinalNewline": true,
   "files.eol": "\n",
   "files.associations": {
-	".sequelizerc": "javascript",
-	"mlx.h": "c",
-	"so_long.h": "c",
-	"libft.h": "c",
+	".sequelizerc": "javascript",	"libft.h": "c",
 	"array": "c",
+	"sigaction": "c",
 	"deque": "c",
 	"string": "c",
 	"unordered_map": "c",
 	"vector": "c",
 	"string_view": "c",
 	"initializer_list": "c",
-	"so_long_bonus.h": "c"
-}
+	"unistd.h": "c",
+	"stdio.h": "c",
+	"signal.h": "c"
+},
+"C_Cpp.errorSquiggles": "EnabledIfIncludesResolve"
 }
