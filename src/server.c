@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:35 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/10 17:21:06 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:12:10 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ Starts and show his PID
 void handler(int num)
 {
 	write(STDOUT_FILENO, "HI!\n", 4);
+	printf("NUM:%d\n", num);
 	if(!num) return;
 }
 
 int main()
 {
-	signal(SIGUSR1, handler);
+	struct sigaction	action;
+
+	action.sa_handler = &handler;
+
+	sigaction(SIGUSR1, &action, NULL);
 	while(1)
 	{
 		printf("My PID: %d\n", getpid());
