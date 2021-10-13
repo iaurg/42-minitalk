@@ -8,6 +8,7 @@ TODO
 - [] You can use one global variable but it must be justified
 - [] Communication between your programs should ONLY be done using UNIX signals.
 - [] You can only use the two signals SIGUSR1 and SIGUSR2
+- [] Remove printf
 
 
 On the mandatory part you are allowed to use the following functions:
@@ -26,7 +27,7 @@ On the mandatory part you are allowed to use the following functions:
 ◦ usleep
 ◦ exit
 
-Material:
+### Material:
 
 https://www.youtube.com/watch?v=83M5-NPDeWs
 
@@ -52,7 +53,17 @@ https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigkill.htm
 
 https://stackoverflow.com/questions/67985972/how-can-you-send-a-string-given-has-argument-to-a-program-to-another-program-usi
 
-Examples:
+Avoid using signal from manual:
+
+The behavior  of signal() varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use sigaction(2) instead.  See Portability below.
+
+Mastering signals: https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUhbrU3HhGhfQVbhjnN9GXCq4&index=42
+
+### Interesting:
+
+https://www.youtube.com/watch?v=X8jsijhllIA
+
+### Examples:
 
 https://github.com/yhcho0405/MiniTalk
 
