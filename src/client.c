@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/14 21:01:30 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/15 06:27:55 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,28 @@ Params from client:
 #include <stdio.h>
 #include <unistd.h>
 
-char *binString(unsigned short n)
+char	*binaryString(unsigned short n)
 {
-    static char bin[8];
-    int x;
+	static char bin[8];
+	int x;
+	x = 6;
 
-    for(x=0;x<7;x++)
-    {
-        bin[x] = n & 8 ? '1' : '0';
-        n <<= 1;
-    }
-    bin[7] = '\0';
+	while(x >= 0)
+	{
+		bin[x] = (n % 2) + '0';
+		n = n / 2;
+		x--;
+	}
 
-    return(bin);
+	bin[7] = '\0';
+
+	return(bin);
 }
 
 int main(int argc, char *argv[])
 {
 	int pid_i;
+	char *binString;
 
 	if (argc != 3)
 	{
@@ -56,10 +60,28 @@ int main(int argc, char *argv[])
 		printf("Not allowed PID\n");
 		return 0;
 	}
-	printf("binString: %s\n", binString(42));
+
+	binString = binaryString(42);
+	while(*binString)
+	{
+		if (*binString == '1')
+		{
+			printf("1");
+			kill(pid_i, SIGUSR1);
+		}
+		else
+		{
+			printf("0");
+			kill(pid_i, SIGUSR2);
+		}
+		binString++;
+	}
+	printf("binaryString: %s\n", binaryString(1));
+	printf("binaryString: %s\n", binaryString(42));
+	printf("binaryString: %s\n", binaryString(127));
 	//  int kill(pid_t pid, int sig );
-	kill(pid_i, SIGUSR1);
-	kill(pid_i, SIGUSR2);
+	//kill(pid_i, SIGUSR1);
+	//kill(pid_i, SIGUSR2);
 
 	/*
 	On kill success  (at least one signal was sent), zero is returned.

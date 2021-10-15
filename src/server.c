@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:35 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/14 20:43:32 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/15 06:25:09 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ int main()
 
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action2, NULL);
+	printf("My PID: %d\n", getpid());
+
+
 	while(1)
 	{
 		printf("My PID: %d\n", getpid());
 		sleep(1);
 	}
+
 	return 0;
 }
