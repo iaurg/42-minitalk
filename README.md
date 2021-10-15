@@ -57,7 +57,11 @@ Avoid using signal from manual:
 
 The behavior  of signal() varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use sigaction(2) instead.  See Portability below.
 
+sigaction manual: https://man7.org/linux/man-pages/man2/sigaction.2.html
+
 Mastering signals: https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUhbrU3HhGhfQVbhjnN9GXCq4&index=42
+
+Binary converter: https://c-for-dummies.com/blog/?p=3032
 
 ### Interesting:
 
