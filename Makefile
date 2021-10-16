@@ -5,9 +5,9 @@ HEADER_DIR = ./includes/minitalk.h
 
 SOURCE_DIR = ./src
 
-LBFT_DIR = ./libs/libft
+PRINTF_DIR = ./libs/printf
 
-LBFT_LIB = ${LBFT_DIR}/libft.a
+PRINTF_LIB = ${PRINTF_DIR}/libftprintf.a
 
 SOURCES_FILES_CLIENT = $(SOURCE_DIR)/client.c
 SOURCES_FILES_SERVER = $(SOURCE_DIR)/server.c
@@ -28,28 +28,28 @@ MSG2 = @echo "Cleaned ✔︎"
 
 all: ${NAME_CLIENT} ${NAME_SERVER} ${HEADER_DIR}
 
-$(NAME_CLIENT): ${LBFT_LIB} ${OBJECTS_CLT}
-	${CC} ${CFLAGS} ${OBJECTS_CLT} ${LBFT_LIB} -o ${NAME_CLIENT}
+$(NAME_CLIENT): ${PRINTF_LIB} ${OBJECTS_CLT}
+	${CC} ${CFLAGS} ${OBJECTS_CLT} ${PRINTF_LIB} -o ${NAME_CLIENT}
 	${MSG1}
 
-$(NAME_SERVER): ${LBFT_LIB} ${OBJECTS_SRV}
-	${CC} ${CFLAGS} ${OBJECTS_SRV} ${LBFT_LIB} -o ${NAME_SERVER}
+$(NAME_SERVER): ${PRINTF_LIB} ${OBJECTS_SRV}
+	${CC} ${CFLAGS} ${OBJECTS_SRV} ${PRINTF_LIB} -o ${NAME_SERVER}
 	${MSG1}
 
-${LBFT_LIB}:
-	@${MAKE} -C ${LBFT_DIR}
+${PRINTF_LIB}:
+	@${MAKE} -C ${PRINTF_DIR}
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 clean:
 	${RM}	${OBJECTS_CLT} ${OBJECTS_SRV}
-	@${MAKE} fclean -C ${LBFT_DIR}
+	@${MAKE} fclean -C ${PRINTF_DIR}
 	${MSG2}
 
 fclean: clean
 	${RM} ${NAME_CLIENT} ${NAME_SERVER}
-	@${MAKE} fclean -C ${LBFT_DIR}
+	@${MAKE} fclean -C ${PRINTF_DIR}
 
 run:
 	${MAKE} && ./so_long.a
