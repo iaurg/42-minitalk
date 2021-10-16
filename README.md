@@ -9,6 +9,7 @@ TODO
 - [] Communication between your programs should ONLY be done using UNIX signals.
 - [] You can only use the two signals SIGUSR1 and SIGUSR2
 - [] Remove printf
+- [] Make code run faster
 
 
 On the mandatory part you are allowed to use the following functions:
