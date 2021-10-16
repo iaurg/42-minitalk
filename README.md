@@ -63,6 +63,17 @@ Mastering signals: https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUh
 
 Binary converter: https://c-for-dummies.com/blog/?p=3032
 
+Bitwise converter: https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm
+
+a = 110000 = 48
+holder += 1 << 6;
+holder += 0 << 5;
+holder += 0 << 4;
+holder += 0 << 3;
+holder += 0 << 2;
+holder += 0 << 1;
+holder += 1 << 0;
+
 ### Interesting:
 
 https://www.youtube.com/watch?v=X8jsijhllIA
