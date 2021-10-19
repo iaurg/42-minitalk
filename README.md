@@ -66,6 +66,8 @@ Binary converter: https://c-for-dummies.com/blog/?p=3032
 
 Bitwise converter: https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm
 
+Generate characters: http://www.unit-conversion.info/texttools/random-string-generator/
+
 a = 110000 = 48
 holder += 1 << 6;
 holder += 0 << 5;
