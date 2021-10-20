@@ -6,28 +6,25 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:35 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/16 16:08:19 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/20 06:59:53 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-int	g_counter = 6;
-
 static void	bit_to_char(int bit)
 {
 	static int	holder = 0;
+	static int	g_counter = 6;
 
 	holder += bit << g_counter;
 	g_counter--;
 	if (g_counter < 0)
 	{
-		write(STDOUT_FILENO, &holder, 2);
+		ft_printf("%c", holder);
 		holder = 0;
 		g_counter = 6;
-		return ;
 	}
-	return ;
 }
 
 static void	handler_zero(int sig)
