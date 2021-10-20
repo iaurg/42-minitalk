@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/19 05:58:37 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/20 06:43:17 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ Params from client:
 
 #include "../includes/minitalk.h"
 
-void char_to_bin(unsigned int n, pid_t process_id)
+static void send_signal(int process_id, int signal)
+{
+	kill(process_id, signal);
+	usleep(3000);
+}
+
+static void char_to_bin(unsigned int n, pid_t process_id)
 {
 	int		i;
 	int		k;
@@ -31,15 +37,9 @@ void char_to_bin(unsigned int n, pid_t process_id)
 	{
 		k = n >> i;
 		if ((k & 1) > 0)
-		{
-			kill(process_id, SIGUSR2);
-			usleep(1000);
-		}
+			send_signal(process_id, SIGUSR2);
 		else
-		{
-			kill(process_id, SIGUSR1);
-			usleep(1000);
-		}
+			send_signal(process_id, SIGUSR1);
 		i--;
 	}
 	return ;
@@ -49,7 +49,7 @@ static void	send_binaries(pid_t process_id, char *string_param)
 {
 	while (*string_param)
 	{
-		char_to_bin(*string_param - 0, process_id);
+		char_to_bin(*string_param, process_id);
 		string_param++;
 	}
 }
