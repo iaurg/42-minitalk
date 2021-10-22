@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/20 06:43:17 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/21 21:03:59 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Params from client:
 static void send_signal(int process_id, int signal)
 {
 	kill(process_id, signal);
-	usleep(3000);
+	usleep(1000);
 }
 
 static void char_to_bin(unsigned int n, pid_t process_id)
