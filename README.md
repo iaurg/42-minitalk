@@ -62,6 +62,8 @@ sigaction manual: https://man7.org/linux/man-pages/man2/sigaction.2.html
 
 Mastering signals: https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUhbrU3HhGhfQVbhjnN9GXCq4&index=42
 
+Know pid received: https://stackoverflow.com/questions/11508427/linux-c-upon-receiving-a-signal-is-it-possible-to-know-the-pid-of-the-sender
+
 Binary converter: https://c-for-dummies.com/blog/?p=3032
 
 Bitwise converter: https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm
