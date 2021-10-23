@@ -1,94 +1,69 @@
 # 42-minitalk
 
-TODO
-- [] The executable files must be named client and server.
-- [] You have to handle errors sensitively. In no way can your program quit unexpectedly
-(Segmentation fault, bus error, double free, etc).
-- [] Your program cannot have memory leaks.
-- [] You can use one global variable but it must be justified
-- [] Communication between your programs should ONLY be done using UNIX signals.
-- [] You can only use the two signals SIGUSR1 and SIGUSR2
-- [] Remove printf
-- [] Make code run faster
+![](./minitalk_running.gif)
 
+Think in binary...
 
-On the mandatory part you are allowed to use the following functions:
-◦ write
-◦ ft_printf and any equivalent YOU coded
-◦ signal
-◦ sigemptyset
-◦ sigaddset
-◦ sigaction
-◦ kill
-◦ getpid
-◦ malloc
-◦ free
-◦ pause
-◦ sleep
-◦ usleep
-◦ exit
+The purpose of this project is to code a small data exchange program using
+UNIX signals.
 
-### Material:
+Made with PDF version 2.
 
-https://www.youtube.com/watch?v=83M5-NPDeWs
+### Resources:
 
-https://www.youtube.com/watch?v=5We_HtLlAbs
+[Sending and Handling Signals in C (kill, signal, sigaction)](https://www.youtube.com/watch?v=83M5-NPDeWs)
+
+[Short introduction to signals in C](https://www.youtube.com/watch?v=5We_HtLlAbs)
 
 Signals communicate between proccesses
 
 usleep stops for some time the execution
 
-getpid() - Gets process ID
+[getpid()](https://man7.org/linux/man-pages/man2/getpid.2.html) - Gets process ID
 
 Signals work as something that send notifications to processes
 
 Process decides what to do when the signal arrives, using a handler
 
-SIGUSR1 = 10 SIGUSR2 = 12
+[Signal numbering for standard signals](https://man7.org/linux/man-pages/man7/signal.7.html)
+
+SIGUSR1 = 10
+
+SIGUSR2 = 12
 
 signals can be sent three ways: -9, -SIGUSR1, USR1
 
-kill()--Send Signal to Process or Group of Processes
+[kill()](https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigkill.htm) Send Signal to Process or Group of Processes
 
-https://www.ibm.com/docs/en/i/7.2?topic=ssw_ibm_i_72/apis/sigkill.htm
-
-https://stackoverflow.com/questions/67985972/how-can-you-send-a-string-given-has-argument-to-a-program-to-another-program-usi
-
-Avoid using signal from manual:
+Avoid using signal() from manual:
 
 The behavior  of signal() varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use sigaction(2) instead.  See Portability below.
 
-sigaction manual: https://man7.org/linux/man-pages/man2/sigaction.2.html
+[sigaction manual](https://man7.org/linux/man-pages/man2/sigaction.2.html)
 
-Mastering signals: https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUhbrU3HhGhfQVbhjnN9GXCq4&index=42
+[Mastering Signals in Linux System](https://www.youtube.com/watch?v=L3XuR-iRysU&list=PLysdvSvCcUhbrU3HhGhfQVbhjnN9GXCq4&index=42)
 
-Know pid received: https://stackoverflow.com/questions/11508427/linux-c-upon-receiving-a-signal-is-it-possible-to-know-the-pid-of-the-sender
+[How to knows PID from sender](https://stackoverflow.com/questions/11508427/linux-c-upon-receiving-a-signal-is-it-possible-to-know-the-pid-of-the-sender)
 
-Binary converter: https://c-for-dummies.com/blog/?p=3032
+[Binary converter](https://c-for-dummies.com/blog/?p=3032)
 
-Bitwise converter: https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm
+[Bitwise converter](https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm)
 
-Generate characters: http://www.unit-conversion.info/texttools/random-string-generator/
+[Generate random number of characters](http://www.unit-conversion.info/texttools/random-string-generator/)
 
+A way to think in bitwise: you count from end to start, and need to invert it using bitwise to get a right binary value in decimal.
+
+```
 a = 110000 = 48
 holder += 1 << 6;
-holder += 0 << 5;
+holder += 1 << 5;
 holder += 0 << 4;
 holder += 0 << 3;
 holder += 0 << 2;
 holder += 0 << 1;
-holder += 1 << 0;
+holder += 0 << 0;
+```
 
 ### Interesting:
 
 https://www.youtube.com/watch?v=X8jsijhllIA
-
-### Examples:
-
-https://github.com/yhcho0405/MiniTalk
-
-https://github.com/mlanca-c/Minitalk
-
-https://github.com/natflausino/Minitalk
-
-https://github.com/rkrocha/minitalk
