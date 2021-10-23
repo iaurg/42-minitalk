@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/23 09:46:38 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/10/23 12:52:00 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Params from client:
 static void send_signal(int process_id, int signal)
 {
 	kill(process_id, signal);
-	usleep(3000);
+	usleep(9000);
 }
 
 static void char_to_bin(unsigned int n, pid_t process_id)
@@ -52,12 +52,22 @@ static void	send_binaries(pid_t process_id, char *string_param)
 		char_to_bin(*string_param, process_id);
 		string_param++;
 	}
+	char_to_bin(*string_param, process_id);
+}
+
+static void handler_action_client(int sig_number)
+{
+	if(sig_number == SIGUSR2)
+		return;
+	ft_printf("End communication");
+	exit(0);
 }
 
 int	main(int argc, char *argv[])
 {
 	int		process_id;
 	char	*string_param;
+	struct sigaction	action;
 
 	process_id = ft_atoi(argv[1]);
 	if (argc != 3 || process_id <= 1)
@@ -65,6 +75,10 @@ int	main(int argc, char *argv[])
 		ft_printf("Invalid arguments, use: ./client <process_id> <string>\n");
 		return (0);
 	}
+	action.sa_flags = SA_SIGINFO;
+	action.sa_handler = handler_action_client;
+	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
 	string_param = argv[2];
 	send_binaries(process_id, string_param);
 	return (0);
