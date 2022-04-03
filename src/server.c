@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:35 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/23 12:44:24 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:00:35 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int	main(void)
 {
 	struct sigaction	action;
 
-	ft_printf("Server PID: %d\n", getpid());
+	sigemptyset(&action.sa_mask);
 	action.sa_flags = SA_SIGINFO;
 	action.sa_sigaction = handler_action;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
+	ft_printf("Server PID: %d\n", getpid());
 	while (1)
 		pause();
 	return (0);

@@ -18,8 +18,6 @@ CC = @clang
 
 CFLAGS = -Wall -Wextra -Werror
 
-# SOURCES = $(addprefix $(SOURCE_DIR)/, $(SOURCES_FILES))
-
 OBJECTS_CLT = ${SOURCES_FILES_CLIENT:.c=.o}
 OBJECTS_SRV = ${SOURCES_FILES_SERVER:.c=.o}
 

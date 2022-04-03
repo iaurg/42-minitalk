@@ -6,19 +6,9 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2021/10/23 12:52:00 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:59:42 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-Params from client:
--The server PID.
--The string that should be sent
-- Validate quantity of arguments
-
-[] Validate params are number and string
-[] Allow pass special characters like \n
-*/
 
 #include "../includes/minitalk.h"
 
@@ -69,8 +59,7 @@ int	main(int argc, char *argv[])
 	char	*string_param;
 	struct sigaction	action;
 
-	process_id = ft_atoi(argv[1]);
-	if (argc != 3 || process_id <= 1)
+	if (argc != 3)
 	{
 		ft_printf("Invalid arguments, use: ./client <process_id> <string>\n");
 		return (0);
@@ -80,6 +69,7 @@ int	main(int argc, char *argv[])
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	string_param = argv[2];
+	process_id = ft_atoi(argv[1]);
 	send_binaries(process_id, string_param);
 	return (0);
 }
