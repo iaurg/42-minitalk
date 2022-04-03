@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 07:38:35 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/02 22:19:08 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:15:01 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+
 typedef struct s_list
 {
 	void			*content;
@@ -36,7 +37,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 char		*ft_strchr(const char *s, int c);
-char		*ft_strrchr(const char	*s, int	c);
+char		*ft_strrchr(const char *s, int c);
 void		*ft_memchr(const void *b, int c, size_t len);
 int			ft_memcmp(const void *b1, const void *b2, size_t len);
 char		*ft_strnstr(const char	*big, const char *little, size_t len);

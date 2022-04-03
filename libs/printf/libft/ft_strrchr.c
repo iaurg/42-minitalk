@@ -6,13 +6,13 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 07:37:59 by itaureli          #+#    #+#             */
-/*   Updated: 2021/07/28 07:37:59 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:14:06 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char	*s, int	c)
+char	*ft_strrchr(const char *s, int c)
 {
 	char	find_c;
 	int		s_len;

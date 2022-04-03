@@ -6,22 +6,23 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:06 by itaureli          #+#    #+#             */
-/*   Updated: 2022/04/03 11:59:42 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:13:10 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-static void send_signal(int process_id, int signal)
+static void	send_signal(int process_id, int signal)
 {
 	kill(process_id, signal);
 	usleep(9000);
 }
 
-static void char_to_bin(unsigned int n, pid_t process_id)
+static void	char_to_bin(unsigned int n, pid_t process_id)
 {
 	int		i;
 	int		k;
+
 	i = 6;
 	while (i >= 0)
 	{
@@ -45,18 +46,18 @@ static void	send_binaries(pid_t process_id, char *string_param)
 	char_to_bin(*string_param, process_id);
 }
 
-static void handler_action_client(int sig_number)
+static void	handler_action_client(int sig_number)
 {
-	if(sig_number == SIGUSR2)
-		return;
+	if (sig_number == SIGUSR2)
+		return ;
 	ft_printf("End communication");
 	exit(0);
 }
 
 int	main(int argc, char *argv[])
 {
-	int		process_id;
-	char	*string_param;
+	int					process_id;
+	char				*string_param;
 	struct sigaction	action;
 
 	if (argc != 3)
