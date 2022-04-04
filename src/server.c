@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 11:35:35 by itaureli          #+#    #+#             */
-/*   Updated: 2022/04/03 13:00:35 by itaureli         ###   ########.fr       */
+/*   Updated: 2022/04/04 04:37:19 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	bit_to_char(int bit, pid_t client_pid)
 		if (holder == '\0')
 		{
 			ft_printf("\n");
-			kill(client_pid, SIGUSR1);
+			if (kill(client_pid, SIGUSR1) == -1)
+				ft_printf("\033[31;1mError: kill failed \033[0m\n");
 		}
 		ft_printf("%c", holder);
 		holder = 0;
@@ -50,8 +51,7 @@ int	main(void)
 	action.sa_sigaction = handler_action;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	ft_printf("Server PID: %d\n", getpid());
+	ft_printf("Server PID: \033[34;1m%d\033[0m\n", getpid());
 	while (1)
 		pause();
-	return (0);
 }
